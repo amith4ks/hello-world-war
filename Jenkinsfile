@@ -4,15 +4,15 @@ pipeline {
  stages {
       stage('checkout') {
            steps {             
-                git branch: 'master', url: 'https://github.com/DGMalli/hello-world-war.git'             
+                git branch: 'master', url: 'https://github.com/amith4ks/hello-world-war.git'             
           }
         }       
 
   stage('Docker Build and Tag') {
            steps {  
 		 
-                sh 'sudo docker build -t samplewebapp:latest .' 
-                sh 'sudo docker tag samplewebapp amith4ks/samplewebapp:latest' 
+                sh 'sudo docker build -t docker:1.0 .' 
+                sh 'sudo docker tag samplewebapp amith4ks/docker:1.0' 
             }
         }
 
@@ -26,7 +26,7 @@ stage('Login to Docker hub') {
   stage('Publish image to Docker Hub') {
           
             steps {
-       	  sh  'sudo docker push amith4ks/samplewebapp:latest'  
+       	  sh  'sudo docker push amith4ks/docker:1.0'  
         }                 
           
         }     
@@ -34,7 +34,7 @@ stage('Login to Docker hub') {
              
             steps 
 	      {
-                sh "sudo docker run -d -p 8004:8080 amith4ks/samplewebapp:latest"
+                sh "sudo docker run -d -p 8004:8080 amith4ks/docker:1.0"
              }
         }
  
