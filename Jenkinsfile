@@ -34,7 +34,7 @@ stage('Login to Docker hub') {
              
             steps 
 	      {
-                sh "sudo docker run -d -p 8004:8080 amith4ks/docker:1.0"
+                sh "sudo docker run -d -p 8006:8080 amith4ks/docker:1.0"
              }
         }
  
